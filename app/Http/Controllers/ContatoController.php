@@ -13,7 +13,8 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        //
+        //retornar página principal
+        return view('contato.index');
     }
 
     /**
