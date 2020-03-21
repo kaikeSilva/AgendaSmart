@@ -18,7 +18,7 @@
         <div class="row flex-column align-items-center ">
             <div class="col-12 ">
                 <!-- formulario para atualizar cadastro -->
-                <form enctype="multipart/form-data"  action="/contato/{{ $contato->id }}" method="POST">
+                <form id="fomulario-atualizar" enctype="multipart/form-data"  action="/contato/{{ $contato->id }}" method="POST">
                     @csrf
                     @method('PATCH')
                     <div class="container">
@@ -43,13 +43,21 @@
                             <div class="col-7">
                                 <div class="row justify-contetn-center">
                                     <label for="nome">Nome:</label>
-                                    <input name="nome" value="{{ $contato->nome }}"  class="form-control"  type="text">
-                                    <label for="telefone">telefone:</label>
-                                    <input name="telefone" value="{{ $contato->telefone }}" class="form-control" type="number">
+                                    <input id="nome" name="nome" value="{{ $contato->nome }}"  class="form-control"  type="text">
+                                    <div id="nome-vazio" class="desaparecer">
+                                        <small class="text-danger">O nome não pode ser vazio!</small>
+                                    </div>
+                                    <div>
+                                        <label class="" for="telefone">telefone:</label>
+                                        <input name="telefone" id="telefone" value="{{ $contato->telefone }}" class="form-control" type="number">
+                                    </div>
+                                    <div id="telefone-vazio" class="desaparecer">
+                                        <small class="text-danger">O telefone não pode ser vazio!</small>
+                                    </div>
 
                                     <div class="col-12">
-                                        <div class="row justify-content-center p-3">
-                                            <input class="btn btn-success " value="Salvar Alterações" type="submit"> 
+                                        <div class="row justify-content-center p-2">
+                                            <a class="btn btn-success" onclick="atualizarContato()" href="#">atualizar dados</a>
                                         </div>   
                                     </div>
                                 </div>

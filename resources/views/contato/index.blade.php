@@ -1,18 +1,4 @@
 @extends('templates.template')
-<style>
-    .caixa {
-        width: 100px;
-        height:100px;
-        background-color:red;
-
-    }
-
-    .bg-cinza {
-        background-color: #ccc;
-    }
-
-
-</style>
 @section('content')
 
     <div class="sombra-externa top por-cima bg-white mb-3">
@@ -67,4 +53,72 @@
        @endforeach
        <button class="btn btn-success top-botao sombra-contato" data-toggle="modal" data-target="#exampleModal">NOVO CONTATO</button>
     </div>
+
+            <!-- Modal -->
+        <div 
+        class="modal fade" 
+        id="exampleModal" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="exampleModalLabel" 
+        aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar Usuário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="storeContato" enctype="multipart/form-data" action="/contato" method="POST">
+                @csrf
+                <div class="modal-body">
+                        <div class="container">
+                            <div class="row flex-column align-items-center ">
+                                <div class="col-12">
+                                    <div class="row">
+
+                                        <div class="col-5 ">
+                                            <div class="row ">
+                                                <!-- input da imagem -->
+                                                <img src=""
+                                                class="rounded-circle"
+                                                height="100px"  
+                                                width="100px" id="fotoModal">
+
+                                                <input onchange="lerURL(this,'fotoModal');" type="file" class="form-control-file" name="foto" id="image">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-7">
+                                            <!-- input do telefone e do nome -->
+                                            <label for="nome">Nome:</label>
+                                            <input name="nome" id="nome" class="form-control"  type="text">
+                                            <div id="nome-vazio" class="desaparecer">
+                                                <small class="text-danger">O nome não pode ser vazio!</small>
+                                            </div>
+                                            <label for="telefone">telefone:</label>
+                                            <input name="telefone" id="telefone" class="form-control" type="number">
+                                            <div id="telefone-vazio" class="desaparecer">
+                                                <small class="text-danger">O telefone não pode ser vazio!</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- submeter -->
+                    <button id='' type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <a href="#" onclick="guardarContato()" class="btn btn-success">Salvar Contato</a>
+                </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    
+    
 @endsection

@@ -1,9 +1,67 @@
+//colocar marcação de erro
+function atribuirErro(input,campoErro){
+
+    input.classList.add('border-danger')
+    document.getElementById(campoErro).classList.remove("desaparecer") 
+    document.getElementById(campoErro).classList.add("mostrar") 
+}
+//retirar marcação de erro
+function retirarErro(input,campoErro) {
+    input.classList.remove('border-danger')
+    document.getElementById(campoErro).classList.add("desaparecer") 
+    document.getElementById(campoErro).classList.remove("mostrar") 
+}
+
+
+function verificarVazio(input,campoErro){
+    if(input.value == ""){
+        console.log(input,"vazio")
+        atribuirErro(input,campoErro)
+        return true
+    } else {
+        console.log(input,"não vazio")
+        retirarErro(input,campoErro)
+        return false
+    }
+}
 
 function guardarContato(){
     let form = document.getElementById('storeContato')
-    console.log(form.getElementsByTagName('input')[1].value)
+
+    let nome = document.getElementById('nome')
+    let telefone = document.getElementById('telefone')
+
+    //coloquei em variaveis pois tudo junto no if quando o primeiro era false não verificava o outro
+    //e disso não atualizava os erros
+    let telefoneVazio = verificarVazio(telefone,"telefone-vazio")
+    let nomeVazio = verificarVazio(nome,"nome-vazio")
+
+    if( telefoneVazio || nomeVazio ){
+        return false
+    }
+        
     form.submit()
-    //window.location.replace('/')
+    window.location.replace('/')
+}
+
+function atualizarContato(){
+    let form = document.getElementById('fomulario-atualizar')
+
+    let nome = document.getElementById('nome')
+    let telefone = document.getElementById('telefone')
+
+
+    //coloquei em variaveis pois tudo junto no if quando o primeiro era false não verificava o outro
+    //e disso não atualizava os erros
+    let telefoneVazio = verificarVazio(telefone,"telefone-vazio")
+    let nomeVazio = verificarVazio(nome,"nome-vazio")
+
+    if( telefoneVazio || nomeVazio ){
+        return false
+    }
+            
+    form.submit()
+    window.location.replace('/')
 }
 
 //função para mostrar na tela a imagem que foi feito o upload

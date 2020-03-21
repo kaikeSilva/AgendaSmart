@@ -1,0 +1,52 @@
+.sombra-externa{
+    -webkit-box-shadow: -1px 8px 14px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 8px 14px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 8px 14px -12px rgba(0,0,0,0.75);
+}
+
+.sombra-botao {
+    -webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+    transition: 700ms;
+}
+
+.sombra-contato {
+    -webkit-box-shadow: 0px 4px 20px -11px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 4px 20px -11px rgba(0,0,0,1);
+    box-shadow: 0px 4px 20px -11px rgba(0,0,0,1);
+    transition: 700ms;
+}
+
+.sombra-botao:hover {
+    -webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+}
+
+
+.top { 
+    position: sticky;
+    top: 65px;
+    z-index: 1;
+}
+
+.top-botao { 
+    position: fixed;
+    float: bottom;
+    bottom: 15px;
+    right: 25px;
+    z-index: 100;
+}
+
+.por-cima {
+    z-index: 10 !important;
+}
+
+.mostrar {
+    display: block;
+}
+
+.desaparecer {
+    display: none;
+}
