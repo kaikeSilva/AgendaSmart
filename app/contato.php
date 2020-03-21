@@ -12,5 +12,4 @@ class Contato extends Model
         'telefone',
         'foto'
     ];
-    //
 }

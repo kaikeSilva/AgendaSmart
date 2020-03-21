@@ -20,16 +20,30 @@
             box-shadow: -1px 8px 14px -12px rgba(0,0,0,0.75);
         }
 
+        .sombra-botao {
+            -webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+            box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+            transition: 700ms;
+        }
+
         .sombra-contato {
             -webkit-box-shadow: 0px 4px 20px -11px rgba(0,0,0,1);
             -moz-box-shadow: 0px 4px 20px -11px rgba(0,0,0,1);
             box-shadow: 0px 4px 20px -11px rgba(0,0,0,1);
+            transition: 700ms;
+        }
+
+        .sombra-botao:hover {
+            -webkit-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
+            box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
         }
 
 
         .top { 
             position: sticky;
-            top: 80px;
+            top: 65px;
             z-index: 1;
         }
 
@@ -47,10 +61,10 @@
     </style>
 </head>
 <body>
-    <button class="btn btn-success top-botao sombra-contato" data-toggle="modal" data-target="#exampleModal">NOVO CONTATO</button>
+
     <nav class="bg-white por-cima sticky-top sombra-externa nav justify-content-center">    
         <a class="navbar-brand" href="/">
-            <img src="{{ url('assets/imagens/agenda-vetor.png') }}" width="70px" class="" alt="">
+            <img src="{{ url('assets/imagens/agenda-vetor.png') }}" width="60px" class="" alt="">
         </a>
     </nav>
     @yield('content')
@@ -70,14 +84,31 @@
             <div class="modal-body">
                     <div class="container">
                         <div class="row flex-column align-items-center ">
-                            <div class="col-7 ">
+                            <div class="col-12">
+                                <div class="row">
 
-                                    <label for="nome">Nome:</label>
-                                    <input name="nome" class="form-control"  type="text">
-                                    <label for="telefone">telefone:</label>
-                                    <input name="telefone" class="form-control" type="number">
-                                    <label for="imagem">imagem:</label>
-                                    <input type="file" class="form-control-file" name="foto" id="image">
+                                    <div class="col-5 ">
+                                        <div class="row ">
+                                            <!-- input da imagem -->
+                                            <img src=""
+                                            class="rounded-circle"
+                                            height="100px"  
+                                            width="100px" id="fotoModal">
+
+                                            <input onchange="lerURL(this,'fotoModal');" type="file" class="form-control-file" name="foto" id="image">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-7">
+                                        <!-- input do telefone e do nome -->
+                                        <label for="nome">Nome:</label>
+                                        <input name="nome" class="form-control"  type="text">
+                                        <label for="telefone">telefone:</label>
+                                        <input name="telefone" class="form-control" type="number">
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
