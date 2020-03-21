@@ -27,6 +27,7 @@
     <div class="container mt-3">
         
         <!-- container de contato -->
+        @foreach($contatos as $contato)
         <div class="row justify-content-center mb-3">
             <div class="col-9 ">
                 <div class="row">
@@ -34,24 +35,24 @@
                                 border rounded-pill p-2  bg-light sombra-contato ">
                         
                         <div class=" align-self-center ml-0"> 
-                            <div class="caixa rounded-circle"></div> 
+                            <img src="/storage/{{ $contato->foto }}" width="100px" class="rounded-circle" alt=""> 
                         </div>
                         
                         <div class="d-flex flex-column align-self-center  justify-content-around pr-5">
-                            <div class="mr-3 mb-2 ">jose luiz amado batista</div>
-                            <div class="mr-3 mt-2">62986353623</div>
+                            <div class="mr-3 mb-2 ">{{$contato->nome}}</div>
+                            <div class="mr-3 mt-2">{{$contato->telefone}}</div>
                         </div>
     
                     </div>
 
                     <div class="pr-3 align-self-center ">
-                        <button class="btn btn-block btn-primary rounded pt-3 pb-3">
+                        <a href="/contato/{{$contato->id}}" class="btn btn-block btn-primary rounded pt-3 pb-3">
                             ALTERAR
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-       
+       @endforeach
     </div>
 @endsection

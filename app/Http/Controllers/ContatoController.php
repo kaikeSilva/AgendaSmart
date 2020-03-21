@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contato;
+use Intervention\Image\Facades\Image;
 
 class ContatoController extends Controller
 {
@@ -13,8 +15,9 @@ class ContatoController extends Controller
      */
     public function index()
     {
+        $contatos = Contato::all();
         //retornar página principal
-        return view('contato.index');
+        return view('contato.index',compact('contatos'));
     }
 
     /**
@@ -35,7 +38,30 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        //tratamento para salvar imagem
+        //no campo foto que vem em storage, mesmo tendo nomeado como foto
+        //somente funciona e lê alguma coisa se uso image
+        if( request('foto') ) {
+            $caminho = request('foto')->store('storage','public');
+            $imagem = Image::make(public_path("storage/{$caminho}"))->fit(1100,1100);
+            $imagem->save();
+        } else {
+            $caminho = "storage/qg4NB1DrmHlMIHD7drlESRjxd5EK34LARmYb63ga.png";
+        }
+
+        
+
+
+        
+        //guardar o novo contato no banco
+        Contato::create([
+            'nome' => request('nome'),
+            'telefone' => request('telefone'),
+            'foto' => $caminho
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -46,7 +72,8 @@ class ContatoController extends Controller
      */
     public function show($id)
     {
-        //
+        //retornar página de alteração de cadastro
+        return view('contato.alterar');
     }
 
     /**

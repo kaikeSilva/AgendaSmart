@@ -13,4 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//rota para pagina principal
 Route::get('/','ContatoController@index');
+
+//rota para retornar pagina de alterar
+Route::get('/contato/{contato}','ContatoController@show');
+
+//rota para criar novo contato
+Route::post('/contato','ContatoController@store');
