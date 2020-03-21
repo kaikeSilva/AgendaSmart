@@ -41,7 +41,6 @@ function guardarContato(){
     }
         
     form.submit()
-    window.location.replace('/')
 }
 
 function atualizarContato(){
@@ -60,8 +59,7 @@ function atualizarContato(){
         return false
     }
             
-    form.submit()
-    window.location.replace('/')
+    document.getElementById('submeter').click()
 }
 
 //função para mostrar na tela a imagem que foi feito o upload
